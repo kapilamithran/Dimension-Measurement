@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimension Measurement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light gray background */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff; /* White container background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow effect */
+            margin-top: 20px;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            margin-top: 20px;
+            border: 2px solid #ddd; /* Light gray border around the image */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        pre {
+            padding: 10px;
+            background-color: #f0f0f0; /* Light gray code block background */
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue button background */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .error {
+            color: #ff0000; /* Red error message */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dimension Measurement</h1>
+    
+    <div class="container">
+        {% if filename %}
+            <p style="color: #555;">Uploaded Image: {{ filename }}</p>
+            <img src="{{ uploaded_image }}" alt="Uploaded Image">
+        {% endif %}
+
+        {% if output %}
+            <p style="color: green;">Output:</p>
+            <pre>{{ output }}</pre>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">Error: {{ error }}</p>
+        {% endif %}
+
+        <form action="/uploads" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+            <button type="submit" style="background-color: #4CAF50;">Upload</button> <!-- Green upload button -->
+        </form>
+    </div>
+</body>
+</html>
